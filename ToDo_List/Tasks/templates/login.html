@@ -1,0 +1,36 @@
+{% extends 'topBar.html' %}
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+<head>
+<style type = 'text/css'>
+  input {
+      display: inline-block;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      text-align: center;
+  }
+  button {
+      border: 4px black;
+      border-radius: 10px;
+      padding: 7px 16px;
+      font-size: 14px;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bold;
+  }
+  button:hover{
+      cursor: pointer;
+  }
+  </style>
+  </head>
+  <h2 ALIGN='center'>Login</h2>
+  <form ALIGN='center' method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+  </form>
+
+
+{% endblock %}

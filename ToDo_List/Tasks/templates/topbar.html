@@ -1,0 +1,127 @@
+
+{%load static%}
+<html>
+    <head>
+                  
+        </style>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+        <style>
+            body{
+              background-color: rgb(216, 166, 100);
+              font-family: 'Roboto', sans-serif;
+              padding-top: 10px;
+            }
+
+            .task-wrapper{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 20px;
+              background-color: rgb(204, 204, 204);
+              border-top: 1px solid rgb(266, 266, 266);
+            }
+
+            .task-title{
+              display: flex;
+            }
+
+            .task-title a {
+              text-decoration: none;
+              color: #000000;
+              margin-left: 10px;
+            }
+
+            .task-complete-icon {
+              height: 20px;
+              width: 20px;
+              background-color: rgb(105,192,105);
+              border-radius: 50%;
+            }
+
+            .task-incomplete-icon {
+              height: 20px;
+              width: 20px;
+              background-color: rgb(59, 58, 58);
+              border-radius: 50%;
+            }
+
+            .delete-link{
+              text-decoration: none;
+              font-weight: 900;
+              color: #cf4949;
+              font-size: 30px;
+              line-height: 0;
+            }
+
+            #add-link {
+              color: #008000;
+              text-decoration: none;
+              font-size: 40px;
+              text-shadow: 1px 1px #81413b;
+            }
+
+            .button {
+              border: 1px solid #6f9aeb;
+              background-color: #90d0eea6;
+              color: #221e1d;
+              padding: 10px;
+              font-size: 14px;
+              border-radius: 5px;
+              cursor: pointer;
+              text-decoration: none;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg p-3 navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">To Do List</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                {%if request.user.is_superuser%}
+                <a class="nav-item nav-link" href="/admin">Admin</a>
+                {%endif%}
+                {% if request.user.is_authenticated == False%}
+                <a class="nav-item nav-link" href="/accounts/login/">Login</a>
+                {%endif%}
+                {% if request.user.is_authenticated == True%}
+                <a class="nav-item nav-link" href="/task-create">Add Task</a>
+                <a class="nav-item nav-link" href="/todolist/">ToDoList</a>
+                <a class="nav-item nav-link" href="/accounts/logout">Logout</a>
+                {%endif%}
+
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class= "container">
+            {%block content%}
+
+            {%endblock content%}
+        </div>
+
+        <!--NEW STUFF-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <!--END NEW STUFF-->
+    </body>
+</html>

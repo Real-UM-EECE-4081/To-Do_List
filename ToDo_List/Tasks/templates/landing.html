@@ -1,0 +1,47 @@
+{% extends 'topBar.html' %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            align-content: center;
+        }
+        a{
+            color: blue;
+            align-content: center;
+            border:black
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+        <h1>Fztk Software</h1>
+        {% if request.user.is_authenticated == True%}
+        <h1>Welcome {{request.user.username}} !</h1>
+        {%endif%}
+        <div ALIGN='center' class="card-group">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">To Do List</h5>
+                <p class="card-text">Here you can view your Tasks.</p>
+                <a class="btn btn-primary btn" href="/todolist" role="button">View</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Add Task</h5>
+                <p class="card-text">Add a new Task to the To Do List</p>
+                <p class="card-text">                              </p>
+                <span class="align-bottom"></span>
+                <a class="btn btn-primary btn" href="todolist/task-create" role="button">Add</a>
+              </div>
+            </div>
+          </div>
+</body>
+</html>
+{%endblock%}

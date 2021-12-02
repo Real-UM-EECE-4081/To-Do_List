@@ -1,0 +1,34 @@
+{%extends 'topBar.html'%}
+{%block title%}
+Your todolist
+{%endblock%}
+
+{%block content%}
+<h1>To-Do List of {{type}}</h1>
+<a class ="button" href="{% url 'todolist' %}">All</a>
+<a class ="button" href="{% url 'todolist_7days' %}">Next 7 Days</a>
+<a class ="button" href="{% url 'todolist_completed' %}">completed</a>
+<a class ="button" href="{% url 'todolist_incomplete' %}">incomplete</a>
+<br>
+<a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+<div class="task-items-wrapper">
+    {% for task in tasks %}
+        <div class="task-wrapper">
+            {% if task.complete %}
+                <div class="task-title">
+                    <div class="task-complete-icon"></div>
+                    <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
+                </div>
+                <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            {% else %} 
+            <div class="task-title">
+                <div class="task-incomplete-icon"></div>
+                <a href="{% url 'task-update' task.id %}">{{task}}</a>
+            </div>
+            <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
+            {% endif %}
+        </div>
+    {% empty %} 
+        <h3>No items in list </h3>
+    {% endfor %}
+{%endblock%}

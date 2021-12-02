@@ -1,0 +1,49 @@
+{% extends 'topBar.html' %}
+{%block title%}
+Task Form
+{%endblock%}
+
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type = 'text/css'>
+    input {
+        display: inline-block;
+        border-radius: 10px;
+        border: 4px double #cccccc;
+        text-align: center;
+    }
+    button {
+        border: 4px black;
+        border-radius: 10px;
+        padding: 7px 16px;
+        font-size: 14px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="TaskForm">
+        <h2 ALIGN='center'>Add a Task</h2>
+        <form ALIGN='center', class="site-form" action="" method ="post">
+            {% csrf_token%}
+            <table ALIGN='center'>{{form.as_table}}</table>
+            <a href="task_list.html">
+                <button type = "submit", name = "Submit">Submit</button>
+            </a>
+        </form>
+    </div>
+</body>
+</html>
+{%endblock%}
